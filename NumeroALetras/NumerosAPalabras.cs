@@ -11,6 +11,47 @@ namespace NumeroALetras
         public long Trillon { get { return UnTrillon; } }
         public long Billon { get { return UnBillon; } }
         public long Millon { get { return UnMillon; } }
+        public ulong UMAX { get { return ulong.MaxValue; } }
+        public ulong UMIN { get { return ulong.MinValue; } }
+        public double DMAX { get { return double.MaxValue; } }
+        public double DMIN { get { return double.MinValue; } }
+        public decimal DecimalMax { get { return decimal.MaxValue; } }
+        public decimal DecimalMin { get { return decimal.MinValue; } }
+        public double ClassMaxValue { get { return 9.99999999999999999999999999999999999999999999999999999999999999999999e68; } }
+        public double ClassMinValue { get { return -9.99999999999999999999999999999999999999999999999999999999999999999999e68; } }
+
+        /*
+         * El numero mas grande que vamos a escribir en letra es:
+         * 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999
+         * 22 * 3 + 2 cifras despues del punto = 68
+         * 9.99999999999999999999999999999999999999999999999999999999999999999999e68
+         * este numero solo es repressentable en dentro de un double
+
+            novecientos noventa y nueve mil novecientos noventa y nueve decallones ....
+
+            Mil
+            Millón
+            Mil millones  
+            Billón  
+            Mil billones
+            Trillón 
+            Mil trillones 
+            Cuadrillón 
+            Mil cuadrillones 
+            Quintillón 
+            Mil quintillones 
+            Sextillón 
+            Mil sextillones 
+            Septillón 
+            Mil septillones 
+            Octillón 
+            Mil octillones 
+            Nonillón 
+            Mil nonillones 
+            Decallón 
+            Mil decillones
+         */
+
 
         private const long UnTrillon = 1000000000000000000; // 1 000 000 000 000 000 000
         private const long UnBillon  = 1000000000000;       //         1 000 000 000 000
@@ -53,20 +94,9 @@ namespace NumeroALetras
 
         public string enLetras(long num)
         {
-            double nro;
-
-            // Convert num to rno
-            try
+            if (num != 0)
             {
-                nro = Convert.ToDouble(num);
-            }
-            catch
-            {
-                return "Error";
-            }
-            if (nro != 0.0)
-            {
-                return (ConvierteNumeroALetras(nro));
+                return (ConvierteNumeroALetras(num));
             }
             else
                 return "CERO M.N.";
@@ -125,6 +155,11 @@ namespace NumeroALetras
             return(toText(entero) + dec + "M.N.");
         }
 
+        private string ConvierteNumeroALetras(long entero)
+        {
+            return (toText(entero) + "M.N.");
+        }
+
         /*
          * Minimun ans Maximum numbers
          * System.Int32 struct. 
@@ -139,7 +174,7 @@ namespace NumeroALetras
          * and maximum 9,223,372,036,854,775,807 value
          * (9 TRILLONES DOCIENTOS VEINTITRES MIL TRECIENTOS SETENTA Y DOS BILLONES TREINTA Y SEIS MIL OCHOCIENTOS CINCUENTA Y CUATRO MILLONES SETECIENTOS SETENTA Y CINCO MIL OCHOCIENTOS SIETE) 
          */
-        
+
         /*
          * En español grupos de seis numero siempre se escriben de igual forma independientemente de si son unidades,
          * millones, billones, trillones.
@@ -148,7 +183,7 @@ namespace NumeroALetras
          * Se tiene que hacer esto porque la magnitud absoluta del maximo long es una unidad menor a la magnitud absoluta del mínimo.
          */
 
-        
+
         private string segmentoToText(long segmento)
         {
             string Num2Text = "";
@@ -180,17 +215,17 @@ namespace NumeroALetras
             else if (segmento == 70) Num2Text = "SETENTA";
             else if (segmento == 80) Num2Text = "OCHENTA";
             else if (segmento == 90) Num2Text = "NOVENTA";
-            else if (segmento < 100) Num2Text = toText(Math.Truncate(segmento / 10) * 10) + " Y " + toText(segmento % 10);
+            else if (segmento < 100) Num2Text = toText((long) Math.Truncate(segmento / 10.0) * 10) + " Y " + toText(segmento % 10);
             else if (segmento == 100) Num2Text = "CIEN";
             else if (segmento < 200) Num2Text = "CIENTO " + toText(segmento - 100);
-            else if ((segmento == 200) || (segmento == 300) || (segmento == 400) || (segmento == 600) || (segmento == 800)) Num2Text = toText(Math.Truncate(segmento / 100)) + "CIENTOS";
+            else if ((segmento == 200) || (segmento == 300) || (segmento == 400) || (segmento == 600) || (segmento == 800)) Num2Text = toText((long)Math.Truncate(segmento / 100.0)) + "CIENTOS";
             else if (segmento == 500) Num2Text = "QUINIENTOS";
             else if (segmento == 700) Num2Text = "SETECIENTOS";
             else if (segmento == 900) Num2Text = "NOVECIENTOS";
-            else if (segmento < 1000) Num2Text = toText(Math.Truncate(segmento / 100) * 100) + " " + toText(segmento % 100);
+            else if (segmento < 1000) Num2Text = toText((long)Math.Truncate(segmento / 100.0) * 100) + " " + toText(segmento % 100);
             else if (segmento == 1000) Num2Text = "MIL";
             else if (segmento < 2000) Num2Text = "MIL " + toText(segmento % 1000);
-            return Num2Text;
+            return Num2Text + " ";
         }
 
         private string toText(long value)
@@ -209,20 +244,34 @@ namespace NumeroALetras
             value -= segmentoTrillones;
             segmentoTrillones /= UnTrillon;
             if (segmentoTrillones != 0)
-                texto += segmentoToText(segmentoTrillones) + "TRILLONES ";
+            {
+                if (segmentoTrillones == 1)
+                    texto += "UN TRILLON ";
+                else
+                    texto += segmentoToText(segmentoTrillones) + "TRILLONES ";
+            }
 
             long milesMillones = value % UnBillon;
             long segmentoBillones = (value - milesMillones);
             value -= segmentoBillones;
             segmentoBillones /= UnBillon;
             if (segmentoBillones != 0)
-                texto += segmentoToText(segmentoBillones) + "BILLONES ";
+            {
+                if (segmentoBillones == 1)
+                    texto += "UN BILLON ";
+                else
+                    texto += segmentoToText(segmentoBillones) + "BILLONES ";
+            }
+                
 
             long milesUnidades = value % UnMillon;
             long segmentoMillones = (value - milesUnidades);
             value -= segmentoMillones;
             segmentoMillones /= UnMillon;
             if (segmentoMillones != 0)
+            {
+
+            }
                 texto += segmentoToText(segmentoMillones) + "MILLONES ";
 
             long segmentoUnidades = value;
