@@ -184,7 +184,7 @@ namespace NumeroALetras
          */
 
 
-        private string[] DeCeroAVeintinueveUnidades = new string[]
+        private string[] DeCeroAVeintiNueveUnidades = new string[]
             {
                 "CERO ",
                 "UNO ",
@@ -232,7 +232,7 @@ namespace NumeroALetras
 
         private string[] Cientos = new string[]
         {
-                "CIENTOS ",
+                "CIENTO ",
                 "DOCIENTOS ",
                 "TRECIENTOS ",
                 "CUATROCIENTOS ",
@@ -257,7 +257,15 @@ namespace NumeroALetras
             {
                 Num2Text += Cientos[centenas - 1];
             }
+            if (tresDigitos < 30)
+            {
+                Num2Text += DeCeroAVeintiNueveUnidades[tresDigitos];
+            }
+            else
+            {
+                Num2Text += DeTreintaACien[decenas - 3];
 
+            }
 
             return Num2Text;
         }
