@@ -184,6 +184,84 @@ namespace NumeroALetras
          */
 
 
+        private string[] DeCeroAVeintinueveUnidades = new string[]
+            {
+                "CERO ",
+                "UNO ",
+                "DOS ",
+                "TRES ",
+                "CUATRO ",
+                "CINCO ",
+                "SEIS ",
+                "SIETE ",
+                "OCHO ",
+                "NUEVE ",
+                "DIEZ ",
+                "ONCE ",
+                "DOCE ",
+                "TRECE ",
+                "CATORCE ",
+                "QUINCE ",
+                "DIECISÉIS ",
+                "DIECISIETE ",
+                "DIECIOCHO ",
+                "DIECINUEVE ",
+                "VEINTE ",
+                "VEINTIUNO ",
+                "VEINTIDOS ",
+                "VEINTITRES ",
+                "VEINTICUATRO ",
+                "VEINTICINCO ",
+                "VEINTISEIS ",
+                "VEINTISIETE ",
+                "VEINTIOCHO ",
+                "VEINTINUEVE "
+            };
+
+        private string[] DeTreintaACien = new string[]
+        {
+                "TREINTA ",
+                "CUARENTA ",
+                "CINCUENTA ",
+                "SESENTA ",
+                "SETENTA ",
+                "OCHENTA ",
+                "NOVENTA ",
+                "CIEN "
+        };
+
+        private string[] Cientos = new string[]
+        {
+                "CIENTOS ",
+                "DOCIENTOS ",
+                "TRECIENTOS ",
+                "CUATROCIENTOS ",
+                "QUINIENTOS ",
+                "SEISCIENTOS ",
+                "SETECIENTOS ",
+                "OCHOCIENTOS ",
+                "NOVECIENTOS "
+        };
+
+        public string TresDigitosUnidadesATexto(int tresDigitos) // 0 a 999 unicamente
+        {
+            string Num2Text = "";
+            int centenas = (int) Math.Truncate(tresDigitos / 100.0);
+            int decenas  = (int) Math.Truncate((tresDigitos - centenas * 100) / 10.0);
+            int unidades = tresDigitos - centenas * 100 - decenas * 10;
+            if (tresDigitos == 100)
+            {
+                return DeTreintaACien[7]; // string CIEN estáen la posición 7
+            }
+            if (centenas > 0)
+            {
+                Num2Text += Cientos[centenas - 1];
+            }
+
+
+            return Num2Text;
+        }
+
         private string segmentoToText(long segmento)
         {
             string Num2Text = "";
