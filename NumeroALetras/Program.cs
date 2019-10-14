@@ -8,7 +8,8 @@ namespace NumeroALetras
         {
             LongRandom lrandom = new LongRandom();
             NumerosAPalabras aPalabras = new NumerosAPalabras();
-            Console.WriteLine("double Max " + aPalabras.DMAX);
+
+            Console.WriteLine("Valores Maximos y Minimos por tipo de dato usado");
             Console.WriteLine("double Min " + aPalabras.DMIN);
             Console.WriteLine("ulong Max " + aPalabras.UMAX);
             Console.WriteLine("ulong Min " + aPalabras.UMIN);
@@ -20,56 +21,81 @@ namespace NumeroALetras
             Console.WriteLine("Class Min " + aPalabras.ClassMinValue);
 
 
-            //Let test that the convertion workss fine in al the value range and at random
+            // Let test that the convertion works fine in al the value range and at random
+            Console.WriteLine("----------------------- EJEMPLOS --------------------------");
+            long numero = 1;
+            for (int i = 0; i < 20; i++)
+            {
+                Console.WriteLine(aPalabras.enLetras(numero) + "\n");
+                numero *= 10;
+            }
+            Console.WriteLine(aPalabras.enLetras(1000001000000000) + "\n");
 
-            Console.WriteLine(aPalabras.enLetras(aPalabras.Min));
-            Console.WriteLine(aPalabras.enLetras(aPalabras.Max));
-            Console.WriteLine(aPalabras.enLetras(aPalabras.Trillon));
-            Console.WriteLine(aPalabras.enLetras(aPalabras.Billon));
-            Console.WriteLine(aPalabras.enLetras(aPalabras.Millon));
-            Console.WriteLine(aPalabras.enLetras(0));
-            Console.WriteLine(aPalabras.enLetras(1));
-            Console.WriteLine(aPalabras.enLetras(2));
-            Console.WriteLine(aPalabras.enLetras(3));
-            Console.WriteLine(aPalabras.enLetras(4));
-            Console.WriteLine(aPalabras.enLetras(5));
-            Console.WriteLine(aPalabras.enLetras(6));
-            Console.WriteLine(aPalabras.enLetras(7));
-            Console.WriteLine(aPalabras.enLetras(8));
-            Console.WriteLine(aPalabras.enLetras(9));
-            Console.WriteLine(aPalabras.enLetras(10));
-            Console.WriteLine(aPalabras.enLetras(11));
-            Console.WriteLine(aPalabras.enLetras(12));
-            Console.WriteLine(aPalabras.enLetras(13));
-            Console.WriteLine(aPalabras.enLetras(14));
-            Console.WriteLine(aPalabras.enLetras(15));
-            Console.WriteLine(aPalabras.enLetras(16));
-            Console.WriteLine(aPalabras.enLetras(17));
-            Console.WriteLine(aPalabras.enLetras(18));
-            Console.WriteLine(aPalabras.enLetras(19));
-            Console.WriteLine(aPalabras.enLetras(20));
-            Console.WriteLine(aPalabras.enLetras(30));
-            Console.WriteLine(aPalabras.enLetras(40));
-            Console.WriteLine(aPalabras.enLetras(50));
-            Console.WriteLine(aPalabras.enLetras(60));
-            Console.WriteLine(aPalabras.enLetras(70));
-            Console.WriteLine(aPalabras.enLetras(80));
-            Console.WriteLine(aPalabras.enLetras(90));
-            Console.WriteLine(aPalabras.enLetras(100));
-            Console.WriteLine(aPalabras.enLetras(101));
-            Console.WriteLine(aPalabras.enLetras(0.01));
-            Console.WriteLine(aPalabras.enLetras(0.02));
-            Console.WriteLine(aPalabras.enLetras(0.05));
-            Console.WriteLine(aPalabras.enLetras(0.10));
-            Console.WriteLine(aPalabras.enLetras(0.20));
-            Console.WriteLine(aPalabras.enLetras(0.50));
-            Console.WriteLine(aPalabras.enLetras(0.63));
-            Console.WriteLine(aPalabras.enLetras(0.75));
-            Console.WriteLine(aPalabras.enLetras(0.85));
-            Console.WriteLine(aPalabras.enLetras(0.95));
+            Console.WriteLine(aPalabras.enLetras(aPalabras.Min) + "\n");
+            Console.WriteLine(aPalabras.enLetras(aPalabras.Max) + "\n");
+            Console.WriteLine(aPalabras.enLetras(aPalabras.Trillon) + "\n");
+            Console.WriteLine(aPalabras.enLetras(aPalabras.Billon) + "\n");
+            Console.WriteLine(aPalabras.enLetras(aPalabras.Millon) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0) + "\n");
+            Console.WriteLine(aPalabras.enLetras(1) + "\n");
+            Console.WriteLine(aPalabras.enLetras(2) + "\n");
+            Console.WriteLine(aPalabras.enLetras(3) + "\n");
+            Console.WriteLine(aPalabras.enLetras(4) + "\n");
+            Console.WriteLine(aPalabras.enLetras(5) + "\n");
+            Console.WriteLine(aPalabras.enLetras(6) + "\n");
+            Console.WriteLine(aPalabras.enLetras(7) + "\n");
+            Console.WriteLine(aPalabras.enLetras(8) + "\n");
+            Console.WriteLine(aPalabras.enLetras(9) + "\n");
+            Console.WriteLine(aPalabras.enLetras(10) + "\n");
+            Console.WriteLine(aPalabras.enLetras(11) + "\n");
+            Console.WriteLine(aPalabras.enLetras(12) + "\n");
+            Console.WriteLine(aPalabras.enLetras(13) + "\n");
+            Console.WriteLine(aPalabras.enLetras(14) + "\n");
+            Console.WriteLine(aPalabras.enLetras(15) + "\n");
+            Console.WriteLine(aPalabras.enLetras(16) + "\n");
+            Console.WriteLine(aPalabras.enLetras(17) + "\n");
+            Console.WriteLine(aPalabras.enLetras(18) + "\n");
+            Console.WriteLine(aPalabras.enLetras(19) + "\n");
+            Console.WriteLine(aPalabras.enLetras(20) + "\n");
+            Console.WriteLine(aPalabras.enLetras(21) + "\n");
+            Console.WriteLine(aPalabras.enLetras(22) + "\n");
+            Console.WriteLine(aPalabras.enLetras(23) + "\n");
+            Console.WriteLine(aPalabras.enLetras(24) + "\n");
+            Console.WriteLine(aPalabras.enLetras(25) + "\n");
+            Console.WriteLine(aPalabras.enLetras(26) + "\n");
+            Console.WriteLine(aPalabras.enLetras(27) + "\n");
+            Console.WriteLine(aPalabras.enLetras(28) + "\n");
+            Console.WriteLine(aPalabras.enLetras(29) + "\n");
+            Console.WriteLine(aPalabras.enLetras(30) + "\n");
+            Console.WriteLine(aPalabras.enLetras(31) + "\n");
+            Console.WriteLine(aPalabras.enLetras(32) + "\n");
+            Console.WriteLine(aPalabras.enLetras(33) + "\n");
+            Console.WriteLine(aPalabras.enLetras(34) + "\n");
+            Console.WriteLine(aPalabras.enLetras(40) + "\n");
+            Console.WriteLine(aPalabras.enLetras(41) + "\n");
+            Console.WriteLine(aPalabras.enLetras(50) + "\n");
+            Console.WriteLine(aPalabras.enLetras(52) + "\n");
+            Console.WriteLine(aPalabras.enLetras(60) + "\n");
+            Console.WriteLine(aPalabras.enLetras(70) + "\n");
+            Console.WriteLine(aPalabras.enLetras(80) + "\n");
+            Console.WriteLine(aPalabras.enLetras(90) + "\n");
+            Console.WriteLine(aPalabras.enLetras(100) + "\n");
+            Console.WriteLine(aPalabras.enLetras(101) + "\n");
+            Console.WriteLine(aPalabras.enLetras(200) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.01) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.02) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.05) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.10) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.20) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.50) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.63) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.75) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.85) + "\n");
+            Console.WriteLine(aPalabras.enLetras(0.95) + "\n");
 
             for (int i = 0; i < 500; i++)
-                Console.WriteLine(aPalabras.enLetras(lrandom.LRandom()));
+                Console.WriteLine(aPalabras.enLetras(lrandom.LRandom()) + "\n");
+
             Console.ReadKey();
         }
     }
