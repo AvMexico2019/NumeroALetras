@@ -99,9 +99,7 @@ namespace UnitTestProject1
             new TestRecord(1111111111, @"MIL CIENTO ONCE MILLONES CIENTO ONCE MIL CIENTO ONCE PESOS ")
         };
     }
-    /*
-                
-                */
+    
     public class TestRecord
     {
         public long num;
