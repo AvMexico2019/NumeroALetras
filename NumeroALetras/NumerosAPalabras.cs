@@ -57,6 +57,17 @@ namespace NumeroALetras
         private const long UnBillon = 1000000000000;       //         1 000 000 000 000
         private const long UnMillon = 1000000;             //                 1 000 000
 
+
+        public string enLetras(ulong num)
+        {
+            return "";
+        }
+
+        public string enLetras(decimal num)
+        {
+            return "";
+        }
+
         public string enLetras(double num)
         {
             double nro;
@@ -122,26 +133,6 @@ namespace NumeroALetras
                 return "CERO";
         }
 
-        public string enLetras(string num)
-        {
-            double nro;
-
-            try
-            {
-                nro = Convert.ToDouble(num);
-            }
-            catch
-            {
-                return "Error";
-            }
-            if (nro != 0.0)
-            {
-                return (ConvierteNumeroALetras(nro));
-            }
-            else
-                return "CERO ";
-        }
-
         private string ConvierteNumeroALetras(double nro)
         {
             Int64 entero;
@@ -162,14 +153,10 @@ namespace NumeroALetras
             return (toText(entero));
         }
 
-        private bool SegmentoSingular;
-
         private string segmentoToText(long segmento)  //  convierte grupos de 6 digitoa a letras cuenta del punto hacia la izquierda
         {
-            SegmentoSingular = false;
             if (segmento == 1)
             {
-                SegmentoSingular = true;
                 return NumerosEnLetras.DeCeroAVeintiNueveUnidades[segmento];
             }
             int ParteMiles = (int)Math.Truncate(segmento / 1000.0);
@@ -177,16 +164,19 @@ namespace NumeroALetras
             string StringParteMiles = Unidades.TresDigitosUnidadesATexto(ParteMiles);
             if (Unidades.EsCero)
                 return Unidades.TresDigitosUnidadesATexto(ParteUnidades);
-            else
-                return StringParteMiles + "MIL " + Unidades.TresDigitosUnidadesATexto(ParteUnidades);
+            else {
+                if (ParteMiles == 1)
+                    return "MIL " + Unidades.TresDigitosUnidadesATexto(ParteUnidades);
+                else
+                    return StringParteMiles + "MIL " + Unidades.TresDigitosUnidadesATexto(ParteUnidades);
+            }
         }
 
         private string toText(long value)
         {
             string texto = "";
 
-            Console.WriteLine(value + "\n");
-
+            Console.Write(value + " ");
             if (value < 0) texto = "MENOS ";
 
             /*
@@ -203,7 +193,9 @@ namespace NumeroALetras
             if (segmentoTrillones != 0)
             {
                 if (segmentoTrillones == 1)
+                {
                     texto += "UN TRILLON ";
+                }    
                 else
                     texto += segmentoToText(segmentoTrillones) + "TRILLONES ";
                 UnPeso = false;
@@ -216,7 +208,9 @@ namespace NumeroALetras
             if (segmentoBillones != 0)
             {
                 if (segmentoBillones == 1)
+                {
                     texto += "UN BILLON ";
+                }
                 else
                     texto += segmentoToText(segmentoBillones) + "BILLONES ";
                 UnPeso = false;
