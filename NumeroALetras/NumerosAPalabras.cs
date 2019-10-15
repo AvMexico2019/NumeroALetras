@@ -176,7 +176,6 @@ namespace NumeroALetras
         {
             string texto = "";
 
-            Console.Write(value + " ");
             if (value < 0) texto = "MENOS ";
 
             /*
@@ -189,12 +188,14 @@ namespace NumeroALetras
             long segmentoTrillones = (value - milesBillones);
             value -= segmentoTrillones;
             segmentoTrillones /= UnTrillon;
-            bool UnPeso = true; ;
+            bool UnPeso = true;
+            bool DePesos = false;
             if (segmentoTrillones != 0)
             {
                 if (segmentoTrillones == 1)
                 {
                     texto += "UN TRILLON ";
+                    DePesos = true;
                 }    
                 else
                     texto += segmentoToText(segmentoTrillones) + "TRILLONES ";
@@ -210,6 +211,7 @@ namespace NumeroALetras
                 if (segmentoBillones == 1)
                 {
                     texto += "UN BILLON ";
+                    DePesos = true;
                 }
                 else
                     texto += segmentoToText(segmentoBillones) + "BILLONES ";
@@ -224,7 +226,10 @@ namespace NumeroALetras
             if (segmentoMillones != 0)
             {
                 if (segmentoMillones == 1)
+                {
                     texto += "UN MILLON ";
+                    DePesos = false;
+                }
                 else
                     texto += segmentoToText(segmentoMillones) + "MILLONES ";
                 UnPeso = false;
@@ -233,11 +238,38 @@ namespace NumeroALetras
             long segmentoUnidades = value;
             if (segmentoUnidades != 0)
             {
-                if ((segmentoUnidades == 1) & UnPeso)
-                    texto += "UN PESO ";
+                if (segmentoUnidades == 1)
+                {
+                    if (UnPeso)
+                        texto += "UN PESO ";
+                    else
+                        texto += "UN PESOS ";
+                } 
                 else
-                    texto += segmentoToText(segmentoUnidades) + "PESOS ";
+                {
+                    if (DePesos)
+                    {
+                        texto += "DE PESOS ";
+                    }
+                    else
+                    {
+                        texto += segmentoToText(segmentoUnidades) + "PESOS ";
+                        DePesos = false;
+                    }
+                }     
             }
+            else
+            {
+                if (DePesos)
+                {
+                    texto += "DE PESOS ";
+                }
+                else
+                {
+                    texto += "DE PESOS ";
+                }
+            }
+
             return texto;
         }
     }

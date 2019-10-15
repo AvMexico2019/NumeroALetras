@@ -7,13 +7,14 @@ namespace UnitTestProject1
     static public class ExpectedResult
     {
         static public TestRecord[] Result = new TestRecord[] {
-            new TestRecord(1000000000000, @"UN BILLON "),
+            new TestRecord(1000000000000, @"UN BILLON DE PESOS "),
+            new TestRecord(1000000000001, @"UN BILLON UN PESOS "),
             new TestRecord(1007001, @"UN MILLON SIETE MIL UN PESOS "),
             new TestRecord(8446744073709551616, @"OCHO TRILLONES CUATROCIENTOS CUARENTA Y SEIS MIL SETECIENTOS CUARENTA Y CUATRO BILLONES SETENTA Y TRES MIL SETECIENTOS NUEVE MILLONES QUINIENTOS CINCUENTA Y UN MIL SEISCIENTOS DIECISÉIS PESOS "),
             new TestRecord(7001, @"SIETE MIL UN PESOS "),
             new TestRecord(1, @"UN PESO "),
             new TestRecord(1000, @"MIL PESOS "),
-            new TestRecord(1000000000, @"MIL MILLONES "),
+            new TestRecord(1000000000, @"MIL MILLONES DE PESOS "),
             new TestRecord(1000000000000000, @"MIL BILLONES "),
             new TestRecord(1001000000000, @"UN BILLON MIL MILLONES "),
             new TestRecord(1007001, @"UN MILLON SIETE MIL UN PESOS "),

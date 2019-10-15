@@ -17,11 +17,11 @@ namespace UnitTestProject1
             NumerosAPalabras aPalabras = new NumerosAPalabras();
             for (int i = 0; i < ExpectedResult.Result.Length; i++)
             {
-                Trace.WriteLine(aPalabras.enLetras(ExpectedResult.Result[i].num));
+                Trace.Write(i + " " + ExpectedResult.Result[i].num + " ");
+                Trace.Write(aPalabras.enLetras(ExpectedResult.Result[i].num) + " ");
                 Trace.WriteLine(ExpectedResult.Result[i].EnPalabras);
                 Assert.AreEqual(ExpectedResult.Result[i].EnPalabras, aPalabras.enLetras(ExpectedResult.Result[i].num));
             }
-            
         }
 
         [TestMethod]
